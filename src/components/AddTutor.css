@@ -1,0 +1,12 @@
+.addTutorInputs{
+  border: 1px solid slateblue;
+  background-color: thistle;
+  margin: auto;
+  width: 300px;
+  height: 400px;
+}
+
+input{
+  display: flex;
+  margin: 10px auto;
+}

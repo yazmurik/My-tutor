@@ -1,0 +1,21 @@
+nav{
+  background-color: antiquewhite;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav_links{
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  list-style: none;
+  text-align: center;
+  justify-content: end;
+  width: 70vw;
+  
+}
+
+ul li{
+  margin-right: 10px;
+}

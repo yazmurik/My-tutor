@@ -1,0 +1,13 @@
+.searchBar{
+  margin: 20px auto;
+
+}
+
+input{
+  border: 1px solid slategray;
+  
+}
+
+button{
+  border: 1px solid slategray;
+}
