@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
 import axios from 'axios';
-import 
-import {baseURL, config} from "./services"
+import { baseURL, config} from "./components/services";
 import Nav from './components/Nav';
 import AddTutor from './components/AddTutor';
 import EditTutor from './components/EditTutor';
@@ -10,6 +9,7 @@ import Home from './components/Home';
 import Payment from './components/Payment';
 import TutorInfo from './components/TutorInfo';
 import Tutors from './components/Tutors';
+import Trivia from './components/Trivia'
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,13 +17,13 @@ import {
   Link
 } from "react-router-dom";
 
+
 function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      let resp = await axios.get(baseURL, config
-      );
+      let resp = await axios.get(baseURL,config);
       // console.log(resp.data.records);
       setData(resp.data.records);
     }
@@ -38,7 +38,10 @@ function App() {
         <EditTutor />
         </Route>
       <Route path="/tutors">
-        <Tutors/>
+        <Tutors data={data}/>
+      </Route>
+      <Route path="/trivia">
+        <Trivia/>
       </Route>
       <Route path="/AddTutor" >
         <AddTutor />

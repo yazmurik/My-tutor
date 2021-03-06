@@ -1,9 +1,10 @@
-export const baseURL = `https://602e9a274410730017c50fd5.mockapi.io`
+export const baseURL =`https://api.airtable.com/v0/appyIlw3Q5onuoxgp/Table%201`
 
-export const config = {
-  headers: {
-    Authorization: `Bearer`,
+// export const config = {
+//   headers: {
+//     Authorization: `Bearer keyExHQWaTQX1sdfg`
   
-  },
-}
- console.log(baseURL)
+//   },
+// }
+
+export const config = { headers: { Authorization: "Bearer " + "keyExHQWaTQX1sdfg" , 'Content-Type': 'application/json' } }
