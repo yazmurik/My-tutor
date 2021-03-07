@@ -9,7 +9,7 @@ function Tutors(props) {
   const [search, setSearch] = useState(""); 
   const [value, setValue] = useState("");
   return (
-    <div>
+    <div className="cardlar">
       {props.data &&
           props.data
             .filter((tutor) =>

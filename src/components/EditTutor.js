@@ -20,7 +20,7 @@ function EditTutor(props) {
   const history = useHistory();
 
   useEffect(()=>{
-    if(params.id){
+    if(params.id && props.data.length > 0){
       const tutor= props.data.find((tutor) => tutor.id === params.id);
       setName(tutor.fields.name);
       setLastName(tutor.fields.lastName);
@@ -63,17 +63,75 @@ function EditTutor(props) {
   return (
     <ListGroup>
       <Col md={{ span: 6, offset: 3 }}>
-        <ListGroup.Item>{props.tutorInfo.fields.name}</ListGroup.Item>
-        <ListGroup.Item>{props.tutorInfo.fields.lastName}</ListGroup.Item>
-        <ListGroup.Item>{props.tutorInfo.fields.about}</ListGroup.Item>
-        <ListGroup.Item>{props.tutorInfo.fields.lessons}</ListGroup.Item>
-        <ListGroup.Item>{props.tutorInfo.fields.session}</ListGroup.Item>
-        <ListGroup.Item>{props.tutorInfo.fields.price}</ListGroup.Item>
-        <Button variant="danger">Remove lesson</Button>
-        <Link to={`/edit/${props.tutorInfo.id}`}>
-          <Button variant="primary">Edit</Button>
-        </Link>
-        
+      <form onSubmit={handleSubmit} className="form">
+        <input
+          placeholder="Your Name"
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+        <input
+          placeholder="Your LastName"
+          type="text"
+          name="lastName"
+          value={lastName}
+          onChange={(e) => {
+            setLastName(e.target.value);
+          }}
+        />
+
+        <input
+          placeholder="Price"
+          type="text"
+          name="price"
+          value={price}
+          onChange={(e) => {
+            setPrice(e.target.value);
+          }}
+        />
+        <input
+          placeholder="Lessons"
+          type="text"
+          name="lessons"
+          value={lessons}
+          onChange={(e) => {
+            setLessons(e.target.value);
+          }}
+        />
+        <input
+          placeholder="your image URL"
+          type="text"
+          name="img"
+          value={img}
+          onChange={(e) => {
+            setImg(e.target.value);
+          }}
+        />
+        <input
+          placeholder="Session Duration"
+          type="text"
+          name="session"
+          value={session}
+          onChange={(e) => {
+            setSession(e.target.value);
+          }}
+        />
+
+        <input
+          placeholder="About"
+          type="text"
+          name="about"
+          value={about}
+          onChange={(e) => {
+            setAbout(e.target.value);
+          }}
+        />
+
+        <input type="submit" value="Update" className="become" />
+      </form>
         </Col>
       </ListGroup>
   );
