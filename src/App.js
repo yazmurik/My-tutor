@@ -10,16 +10,14 @@ import Payment from './components/Payment';
 import TutorInfo from './components/TutorInfo';
 import Tutors from './components/Tutors';
 import Trivia from './components/Trivia'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Route} from "react-router-dom";
 
 
 function App() {
   const [data, setData] = useState([]);
+  const [tutorInfo, setTutorInfo] =useState(null);
+  const[total,setTotal] = useState(null);
+
 
   useEffect(() => {
     const getData = async () => {
@@ -30,15 +28,15 @@ function App() {
     getData();
   }, []);
   console.log('main data is',data)
-
+  console.log(tutorInfo)
   return (
     <div className="App">
       <Nav/>
       <Route path='/edit/:id'>
-        <EditTutor />
+        <EditTutor data={data}/>
         </Route>
       <Route path="/tutors">
-        <Tutors data={data}/>
+        <Tutors data={data} setTutorInfo={setTutorInfo}/>
       </Route>
       <Route path="/trivia">
         <Trivia/>
@@ -47,7 +45,7 @@ function App() {
         <AddTutor />
       </Route>
       <Route path="/TutorInfo" >
-        <TutorInfo  />
+        <TutorInfo tutorInfo={tutorInfo}  setTotal={setTotal}/>
       </Route>
       <Route path="/Payment"  >
         <Payment />

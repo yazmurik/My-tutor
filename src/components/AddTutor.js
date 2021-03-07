@@ -1,9 +1,9 @@
-import React, { useEffect ,useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import { baseURL, config} from "./services";
-import {Link } from "react-router-dom";
+
 import { useHistory } from "react-router-dom";
-import {Card, Button, Navbar,Row,Col,NavDropdown,Form,FormControl} from 'react-bootstrap'
+import {Button,Row,Col,Form,} from 'react-bootstrap'
 
 import './AddTutor.css'
 
