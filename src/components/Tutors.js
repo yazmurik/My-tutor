@@ -7,11 +7,17 @@ function Tutors(props) {
 
   const [search, setSearch] = useState(""); 
   const [value, setValue] = useState("");
+
+  function searchInput(e) {
+    setSearch(e.target.value);
+    let filterResult= props.data.filter((tutor)=>
+    tutor.fields.lessons.toLowerCase().includes(search))
+  }
   return (
     <div>
       <div className="searchBar">
         <div class="ui icon input">
-          <input type="text" placeholder="Search..."/>
+          <input type="text" placeholder="Search..." onChange={searchInput}/>
           <i aria-hidden="true" class="search icon"></i>
         </div>
       </div>
