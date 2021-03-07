@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import {Link } from "react-router-dom";
-import {Card, Button} from 'react-bootstrap'
 import './Tutors.css'
-
+import { Card, Icon, Grid, Image } from 'semantic-ui-react'
 
 function Tutors(props) {
 
   const [search, setSearch] = useState(""); 
   const [value, setValue] = useState("");
   return (
-    <div className="cardlar">
+    <div>
+      <div className="searchBar">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search..."/>
+          <i aria-hidden="true" class="search icon"></i>
+        </div>
+      </div>
       {props.data &&
           props.data
             .filter((tutor) =>
@@ -17,26 +22,31 @@ function Tutors(props) {
             )
             .map((tutor)=>{
         return(
-          <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={tutor.fields.img} />
-        <Card.Body>
-          <Card.Title>{tutor.fields.name} ${tutor.fields.price}</Card.Title>
-
-          <Card.Text>{tutor.fields.about}</Card.Text>
-          <Link to={`/TutorInfo/${tutor.id}`}>
-            <h5 onClick={(e)=>{
-              if (e.target.textContent === tutor.fields.name){
-                props.setTutorInfo(tutor)
-              }
-            }}
-            >{tutor.fields.name}</h5>
-          </Link>
-        </Card.Body>
-      </Card>
+          <div class="card">
+            <img src="img_avatar.png" alt="" />
+            <div class="container">
+              <h4><b>{tutor.fields.name}</b></h4> 
+              <p>{tutor.fields.lessons}</p> 
+            </div>
+            <br/>
+             <Link to={`/TutorInfo/${tutor.id}`}>
+               <div class="p-2">
+                 <button onClick={(e)=>{
+                    if (e.target.textContent === "View More..."){
+                      props.setTutorInfo(tutor)
+                    }
+                  }}
+                   class="btn btn-info pd">View More...</button>
+               </div>
+                </Link> 
+                   
+          </div>
+             
+                       
         )
       })}
-      
     </div>
+    
        
   );
 }

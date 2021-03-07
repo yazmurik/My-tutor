@@ -4,10 +4,11 @@ import {TextField} from '@material-ui/core';
 
 function Home() {
   return (
-    <TextField id="outlined-search" 
-    label="Search field" 
-    type="search"
-     variant="outlined" />
+    <div class="ui icon input">
+      <input type="text" placeholder="Search..."/>
+      <i aria-hidden="true" class="search icon"></i>
+      </div>
+
   );
 }
 

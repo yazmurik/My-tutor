@@ -4,6 +4,7 @@ nav{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto;
 }
 
 .nav_links{

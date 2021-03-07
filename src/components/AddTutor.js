@@ -43,21 +43,8 @@ function AddTutor(props) {
   }
 
   return (
-    // <div>
-    //   <h3>Became a tutor with Us</h3>
-    //   <div className="addTutorInputs">
-    //     <input onChange={(e)=>{setName(e.target.value)}} placeholder="Your name" value={name}/>
-    //     <input onChange={(e)=>{setLastName(e.target.value)}} placeholder="Last name" value={lastName}/>
-    //     <input onChange={(e)=>{setPrice(e.target.value)}} placeholder="Price" value={price}/>
-    //     <input onChange={(e)=>{setLessons(e.target.value)}} placeholder="Lessons" value={lessons}/>
-    //     <input onChange={(e)=>{setAbout(e.target.value)}} placeholder="About" value={about}/>
-    //     <input onChange={(e)=>{setImg(e.target.value)}} placeholder="img" value={img}/>
-    //     <input onChange={(e)=>{setSession(e.target.value)}} placeholder="session" value={session}/>
-    //     <button className="btn btn-primary mx-auto" onClick={handleSubmit}>Submit</button>
-    //   </div>
-    // </div>
-
-    <Form>
+    <div className="addForms">
+      <Form>
       <Row>
       <Col md={{ span: 4, offset: 4 }}>
           <Form.Control placeholder="First name" onChange={(e)=>{setName(e.target.value)}} />
@@ -95,6 +82,8 @@ function AddTutor(props) {
       </Row>
       <Button onClick={handleSubmit}variant="outline-success">Submit</Button>
     </Form>
+    </div>
+    
 
 )}
 
