@@ -15,7 +15,7 @@ import { Route} from "react-router-dom";
 
 function App() {
   const [data, setData] = useState([]);
-  const [tutorInfo, setTutorInfo] =useState(null);
+  const [tutorInfo, setTutorInfo] =useState("");
   const[total,setTotal] = useState(null);
 
 
@@ -28,7 +28,7 @@ function App() {
     getData();
   }, []);
   console.log('main data is',data)
-  console.log(tutorInfo)
+
   return (
     <div className="App">
       <Nav/>
@@ -45,7 +45,7 @@ function App() {
         <AddTutor />
       </Route>
       <Route path="/TutorInfo" >
-        <TutorInfo tutorInfo={tutorInfo}  setTotal={setTotal}/>
+        <TutorInfo tutorInfo={tutorInfo}  total={total}/>
       </Route>
       <Route path="/Payment"  >
         <Payment />

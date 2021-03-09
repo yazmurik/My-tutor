@@ -37,18 +37,15 @@ function Tutors(props) {
             <br/>
              <Link to={`/TutorInfo/${tutor.id}`}>
                <div class="p-2">
-                 <button onClick={(e)=>{
-                    if (e.target.textContent === "View More..."){
+                 <button class="btn btn-info pd" onClick={(e)=>{
+                    if (e.target.textContent === tutor.fields.name){
                       props.setTutorInfo(tutor)
                     }
                   }}
-                   class="btn btn-info pd">View More...</button>
+                   >{tutor.fields.name}</button>
                </div>
-                </Link> 
-                   
-          </div>
-             
-                       
+                </Link>    
+          </div>          
         )
       })}
     </div>

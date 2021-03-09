@@ -3,8 +3,9 @@ import { useHistory, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL, config } from "./services";
-import {ListGroup, Col, Button} from "react-bootstrap";
+import {ListGroup, Col} from "react-bootstrap";
 import {Link } from "react-router-dom";
+import { Button, Checkbox, Form, TextArea } from 'semantic-ui-react'
 
 
 function EditTutor(props) {
@@ -59,79 +60,70 @@ function EditTutor(props) {
     
   };
 
-  console.log(params.id);
   return (
     <ListGroup>
       <Col md={{ span: 6, offset: 3 }}>
-      <form onSubmit={handleSubmit} className="form">
-        <input
-          placeholder="Your Name"
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
-        <input
-          placeholder="Your LastName"
-          type="text"
-          name="lastName"
-          value={lastName}
-          onChange={(e) => {
-            setLastName(e.target.value);
-          }}
-        />
-
-        <input
-          placeholder="Price"
-          type="text"
-          name="price"
-          value={price}
-          onChange={(e) => {
-            setPrice(e.target.value);
-          }}
-        />
-        <input
-          placeholder="Lessons"
-          type="text"
-          name="lessons"
-          value={lessons}
-          onChange={(e) => {
-            setLessons(e.target.value);
-          }}
-        />
-        <input
-          placeholder="your image URL"
-          type="text"
-          name="img"
-          value={img}
-          onChange={(e) => {
-            setImg(e.target.value);
-          }}
-        />
-        <input
-          placeholder="Session Duration"
-          type="text"
-          name="session"
-          value={session}
-          onChange={(e) => {
-            setSession(e.target.value);
-          }}
-        />
-
-        <input
-          placeholder="About"
-          type="text"
-          name="about"
-          value={about}
-          onChange={(e) => {
-            setAbout(e.target.value);
-          }}
-        />
-
-        <input type="submit" value="Update" className="become" />
-      </form>
+          <Form>
+            <Form.Field>
+              <label>First Name</label>
+              <input 
+                placeholder='First Name' type="text"
+                name="name"
+                value={name}
+                onChange={(e) => {
+                setName(e.target.value);
+              }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>Last Name</label>
+              <input placeholder='Last Name' 
+              name="name"
+              value={lastName}
+              onChange={(e) => {
+              setLastName(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>Price</label>
+              <input placeholder='Price' 
+              name="name"
+              value={price}
+              onChange={(e) => {
+              setPrice(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>Lessons</label>
+              <input placeholder='Lessons' 
+              name="name"
+              value={lessons}
+              onChange={(e) => {
+              setLessons(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>Session Duration</label>
+              <input placeholder='Session Duration' 
+              name="name"
+              value={session}
+              onChange={(e) => {
+              setSession(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>About</label>
+              <TextArea placeholder='Tell us more' 
+              name="name"
+              value={about}
+              onChange={(e) => {
+              setAbout(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <Checkbox label='I agree to the Terms and Conditions' />
+            </Form.Field>
+            <Button type='submit' onClick={handleSubmit}>Update</Button>
+          </Form>
         </Col>
       </ListGroup>
   );
