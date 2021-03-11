@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import {Link } from "react-router-dom";
 import './Tutors.css'
-import { Card, Icon, Grid, Image } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
+
 
 function Tutors(props) {
 
@@ -15,12 +16,17 @@ function Tutors(props) {
   }
   return (
     <div>
+      <br/>
+      <div>
+        <Header as='h1' color='teal'>Find your Tutor,  Find your Future</Header>
+      </div>
       <div className="searchBar">
         <div class="ui icon input">
           <input type="text" placeholder="Search..." onChange={searchInput}/>
           <i aria-hidden="true" class="search icon"></i>
         </div>
       </div>
+      
       {props.data &&
           props.data
             .filter((tutor) =>

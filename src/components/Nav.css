@@ -1,22 +1,86 @@
-nav{
-  background-color: antiquewhite;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
+
+*{
+  font-family:'Rubik', sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
+.navbar{
+  background: rgb(255, 207, 207);
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+}
+
 
 .nav_links{
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  list-style: none;
-  text-align: center;
-  justify-content: end;
-  width: 70vw;
-  
+  display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -24;
+    list-style: none;
+
+    @media screen and (max-width: 768px){
+      display:none;
+    }
 }
 
-ul li{
-  margin-right: 10px;
+.btnHome{
+  color: rgb(45, 104, 172);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1 rem;
+    height: 100%;
+    cursor: pointer;
+    margin: 15px;
+    font-size: large;
 }
+
+.btnTutors{
+  color: rgb(45, 104, 172);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1 rem;
+    height: 100%;
+    cursor: pointer;
+    margin: 15px;
+    font-size: large;
+}
+
+.btnTrivia{
+  color: rgb(45, 104, 172);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1 rem;
+    height: 100%;
+    cursor: pointer;
+    margin: 15px;
+    font-size: large;
+}
+
+.btnAdd{
+  color: rgb(45, 104, 172);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1 rem;
+    height: 100%;
+    cursor: pointer;
+    margin: 15px;
+    font-size: large;
+}
+
+.signBtn{
+  background-color: rgb(45, 104, 172);
+  color: white;
+  border: thin ;
+  height: 25px;
+  width: 80px;
+  border-radius: 5px;
+}
+    
+    

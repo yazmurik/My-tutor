@@ -11,6 +11,7 @@ import TutorInfo from './components/TutorInfo';
 import Tutors from './components/Tutors';
 import Trivia from './components/Trivia'
 import { Route} from "react-router-dom";
+import Footer from "./components/Footer"
 
 
 function App() {
@@ -30,29 +31,33 @@ function App() {
   console.log('main data is',data)
 
   return (
-    <div className="App">
-      <Nav/>
-      <Route path='/edit/:id'>
-        <EditTutor data={data}/>
+    <div className="page-container">
+      <div className="content-wrap">
+          <Nav/>
+        <Route path='/edit/:id'>
+          <EditTutor data={data}/>
+          </Route>
+        <Route path="/tutors">
+          <Tutors data={data} setTutorInfo={setTutorInfo}/>
         </Route>
-      <Route path="/tutors">
-        <Tutors data={data} setTutorInfo={setTutorInfo}/>
-      </Route>
-      <Route path="/trivia">
-        <Trivia/>
-      </Route>
-      <Route path="/AddTutor" >
-        <AddTutor />
-      </Route>
-      <Route path="/TutorInfo" >
-        <TutorInfo tutorInfo={tutorInfo}  total={total}/>
-      </Route>
-      <Route path="/Payment"  >
-        <Payment />
-      </Route>
-      <Route exact path="/">
-        <Home />
-      </Route>
+        <Route path="/trivia">
+          <Trivia/>
+        </Route>
+        <Route path="/AddTutor" >
+          <AddTutor />
+        </Route>
+        <Route path="/TutorInfo" >
+          <TutorInfo tutorInfo={tutorInfo}  total={total}/>
+        </Route>
+        <Route path="/Payment"  >
+          <Payment />
+        </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </div>
+      
+      <Footer/>
     </div>
   );
 }

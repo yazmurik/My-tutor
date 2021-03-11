@@ -1,0 +1,14 @@
+.main-footer{
+  color: white;
+  background-color: rgb(255, 207, 207);
+  /* padding-top: 3em; */
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.list-unstyled{
+  color:rgb(45, 104, 172);
+}
+
+

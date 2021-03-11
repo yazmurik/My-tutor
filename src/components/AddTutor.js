@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { baseURL, config} from "./services";
-
+import { Button, Checkbox, Form, TextArea } from 'semantic-ui-react'
+  import {ListGroup, Row,Col,} from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import {Button,Row,Col,Form,} from 'react-bootstrap'
+
 
 import './AddTutor.css'
 
@@ -17,6 +18,7 @@ function AddTutor(props) {
   const [img, setImg] = useState("");
   const [session, setSession] = useState("");
   const history = useHistory();
+  
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -43,48 +45,71 @@ function AddTutor(props) {
   }
 
   return (
-    <div className="addForms">
-      <Form>
-      <Row>
-      <Col md={{ span: 4, offset: 4 }}>
-          <Form.Control placeholder="First name" onChange={(e)=>{setName(e.target.value)}} />
+    <ListGroup>
+      <Col md={{ span: 6, offset: 3 }}>
+          <Form>
+            <Form.Field>
+              <label>First Name</label>
+              <input 
+                placeholder='First Name' type="text"
+                name="name"
+                value={name}
+                onChange={(e) => {
+                setName(e.target.value);
+              }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>Last Name</label>
+              <input placeholder='Last Name' 
+              name="name"
+              value={lastName}
+              onChange={(e) => {
+              setLastName(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>Price</label>
+              <input placeholder='Price' 
+              name="name"
+              value={price}
+              onChange={(e) => {
+              setPrice(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>Lessons</label>
+              <input placeholder='Lessons' 
+              name="name"
+              value={lessons}
+              onChange={(e) => {
+              setLessons(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>Session Duration</label>
+              <input placeholder='Session Duration' 
+              name="name"
+              value={session}
+              onChange={(e) => {
+              setSession(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <label>About</label>
+              <TextArea placeholder='Tell us more' 
+              name="name"
+              value={about}
+              onChange={(e) => {
+              setAbout(e.target.value);
+            }}/>
+            </Form.Field>
+            <Form.Field>
+              <Checkbox label='I agree to the Terms and Conditions' />
+            </Form.Field>
+            <Button type='submit' onClick={handleSubmit}>Add Tutor</Button>
+          </Form>
         </Col>
-        </Row> 
-        <Row>
-        <Col md={{ span: 4, offset: 4 }}>
-          <Form.Control placeholder="Last name" onChange={(e)=>{setLastName(e.target.value)}} />
-        </Col>
-      </Row>
-      <Row>
-      <Col md={{ span: 4, offset: 4 }}>
-          <Form.Control placeholder="Price" onChange={(e)=>{setPrice(e.target.value)}}/>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={{ span: 4, offset: 4 }}>
-          <Form.Control placeholder="Lessons" onChange={(e)=>{setLessons(e.target.value)}}/>
-        </Col>
-      </Row>
-      <Row>
-      <Col md={{ span: 4, offset: 4 }}>
-          <Form.Control placeholder="About" onChange={(e)=>{setAbout(e.target.value)}}/>
-        </Col>
-      </Row>
-      <Row>
-      <Col md={{ span: 4, offset: 4 }}>
-          <Form.Control placeholder="Image URL" onChange={(e)=>{setImg(e.target.value)}}/>
-        </Col>
-      </Row>
-      <Row>
-      <Col md={{ span: 4, offset: 4 }}>
-          <Form.Control placeholder="Session" onChange={(e)=>{setSession(e.target.value)}}/>
-        </Col>
-      </Row>
-      <Button onClick={handleSubmit}variant="outline-success">Submit</Button>
-    </Form>
-    </div>
-    
-
+      </ListGroup>
 )}
 
 export default AddTutor;
