@@ -3,13 +3,13 @@ import './App.css';
 import axios from 'axios';
 import { baseURL, config} from "./components/services";
 import Nav from './components/Nav';
-import AddTutor from './components/AddTutor';
-import EditTutor from './components/EditTutor';
-import Home from './components/Home';
+import AddTutor from './components/pages/AddTutor';
+import EditTutor from './components/pages/EditTutor';
+import Home from './components/pages/Home';
 import Payment from './components/Payment';
-import TutorInfo from './components/TutorInfo';
-import Tutors from './components/Tutors';
-import Trivia from './components/Trivia'
+import TutorInfo from './components/pages/TutorInfo';
+import Tutors from './components/pages/Tutors';
+import Trivia from './components/pages/Trivia'
 import { Route} from "react-router-dom";
 import Footer from "./components/Footer"
 
@@ -56,7 +56,6 @@ function App() {
           <Home />
         </Route>
       </div>
-      
       <Footer/>
     </div>
   );
