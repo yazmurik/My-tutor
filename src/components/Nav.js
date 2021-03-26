@@ -9,25 +9,39 @@ const handleClick=()=>{
   setClick(!click)
 }
   return (
-        <nav className="navbar">
-          <div>
-            <ul className = 'nav_links'>
-              <li><Link className="btnHome" to='/'>Home</Link></li>
-            <li><Link className="btnTutors" to='/tutors'>Tutors</Link></li>
-            <li><Link className="btnTrivia" to='/trivia'>Trivia</Link></li>
-              <li><Link className="btnAdd" to='/AddTutor'>Add Tutor</Link></li>
-          </ul>
-          </div>
-          <div >
-            <button className="signBtn">
-              <h5 onClick={handleClick}>{click ? "Log Out" : "Sign Up"}</h5>
-            </button>
-            
-          </div>
-          
-        </nav>
-    
-    
+    <nav className="navbar">
+      <div>
+        <ul className="nav_links">
+          <li>
+            <Link className="btnHome" to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="btnTutors" to="/tutors">
+              Tutors
+            </Link>
+          </li>
+          <li>
+            <Link className="btnTrivia" to="/trivia">
+              Trivia
+            </Link>
+          </li>
+          <li>
+            <Link className="btnAdd" to="/AddTutor">
+              Add Tutor
+            </Link>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <Link to="/signup">
+          <button className="signBtn">
+            <h5 onClick={handleClick}>{click ? "Log Out" : "Sign Up"}</h5>
+          </button>
+        </Link>
+      </div>
+    </nav>
   );
 }
 

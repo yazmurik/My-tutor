@@ -12,6 +12,7 @@ import Tutors from './components/pages/Tutors';
 import Trivia from './components/pages/Trivia'
 import { Route} from "react-router-dom";
 import Footer from "./components/Footer"
+import SignUp from './components/pages/SignUp';
 
 
 function App() {
@@ -54,6 +55,9 @@ function App() {
         </Route>
         <Route exact path="/">
           <Home />
+        </Route>
+        <Route path="/SignUp" >
+          <SignUp />
         </Route>
       </div>
       <Footer/>
