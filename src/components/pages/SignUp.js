@@ -28,7 +28,7 @@ export default function SignUp() {
     <div>
       <Grid centered>
         <Grid.Row>
-          <Grid.Column width={10}>
+          <Grid.Column width={6}>
             <Form onSubmit={onSubmit}>
               <Form.Field>
                 <label>Full Name</label>

@@ -3,7 +3,6 @@ import { useHistory, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL, config } from "../services";
-import {ListGroup, Col} from "react-bootstrap";
 import {Link } from "react-router-dom";
 import { Button, Checkbox, Form, TextArea } from 'semantic-ui-react'
 
@@ -61,8 +60,6 @@ function EditTutor(props) {
   };
 
   return (
-    <ListGroup>
-      <Col md={{ span: 6, offset: 3 }}>
           <Form>
             <Form.Field>
               <label>First Name</label>
@@ -124,8 +121,6 @@ function EditTutor(props) {
             </Form.Field>
             <Button type='submit' onClick={handleSubmit}>Update</Button>
           </Form>
-        </Col>
-      </ListGroup>
   );
 }
 
