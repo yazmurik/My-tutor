@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL, config } from "../services";
 import {Link } from "react-router-dom";
-import { Button, Checkbox, Form, TextArea } from 'semantic-ui-react'
+import { Button, Checkbox, Grid, Form, TextArea } from 'semantic-ui-react'
 
 
 function EditTutor(props) {
@@ -60,7 +60,10 @@ function EditTutor(props) {
   };
 
   return (
-          <Form>
+
+    <Grid centered columns={2}>
+    <Grid.Column>
+      <Form>
             <Form.Field>
               <label>First Name</label>
               <input 
@@ -121,6 +124,9 @@ function EditTutor(props) {
             </Form.Field>
             <Button type='submit' onClick={handleSubmit}>Update</Button>
           </Form>
+    </Grid.Column>
+    </Grid>
+          
   );
 }
 

@@ -15,6 +15,10 @@ function AddTutor(props) {
   const [img, setImg] = useState("");
   const history = useHistory();
 
+  function pageReload() {
+    return window.location.reload();
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     let data = {
@@ -35,6 +39,7 @@ function AddTutor(props) {
     await axios.post(baseURL, { fields: data }, config);
     // props.setToggleFetch((prev) => !prev);
     history.push("/tutors");
+    pageReload()
   }
 
   return (

@@ -3,7 +3,7 @@ import {Link } from "react-router-dom";
 import axios from 'axios';
 import { useHistory, useParams } from "react-router-dom";
 import { baseURL, config} from "../services";
-import { Table, Grid } from 'semantic-ui-react'
+import { Table, Grid, Button } from 'semantic-ui-react'
 
 
 function TutorInfo (props) {
@@ -25,15 +25,7 @@ function TutorInfo (props) {
   }
 
   return (
-    // <div>
-    //   <ListGroup>
-    //   <Col md={{ span: 4, offset: 4 }}>
-    //     <ListGroup.Item>{props.tutorInfo.fields.name}</ListGroup.Item>
-    //     <ListGroup.Item>{props.tutorInfo.fields.lastName}</ListGroup.Item>
-    //     <ListGroup.Item>{props.tutorInfo.fields.about}</ListGroup.Item>
-    //     <ListGroup.Item>{props.tutorInfo.fields.lessons}</ListGroup.Item>
-    //     <ListGroup.Item>{props.tutorInfo.fields.session}</ListGroup.Item>
-    //     <ListGroup.Item>{props.tutorInfo.fields.price}</ListGroup.Item>
+    
     //     <Button variant="danger" onClick={removeLesson}>Remove lesson</Button>
     //     <Link to={`/edit/${props.tutorInfo.id}`}>
     //       <Button variant="primary">Edit</Button>
@@ -62,7 +54,15 @@ function TutorInfo (props) {
       </Table.Row>
     </Table.Body>
   </Table>
+  <Button.Group centered>
+    <Button onClick={removeLesson}>Remove</Button>
+    <Button.Or />
+    <Link to={`/edit/${props.tutorInfo.id}`}>
+      <Button positive >Edit</Button>
+    </Link>
+  </Button.Group>
     </Grid.Column>
+    
     </Grid>
 
 
