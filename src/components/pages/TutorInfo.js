@@ -9,6 +9,7 @@ import { Table, Grid, Button } from 'semantic-ui-react'
 function TutorInfo (props) {
    let history= useHistory();
 
+  
 
   //Instead ComponentDidmount
   function pageReload() {
@@ -25,14 +26,6 @@ function TutorInfo (props) {
   }
 
   return (
-    
-    //     <Button variant="danger" onClick={removeLesson}>Remove lesson</Button>
-    //     <Link to={`/edit/${props.tutorInfo.id}`}>
-    //       <Button variant="primary">Edit</Button>
-    //     </Link>
-    //     </Col>
-    //   </ListGroup>
-    // </div>
     <Grid centered columns={2}>
     <Grid.Column>
       <Table fixed>

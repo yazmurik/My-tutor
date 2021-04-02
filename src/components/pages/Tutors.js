@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../Tutors.css";
-import { Header, Card, Grid, Image, Icon, Button } from "semantic-ui-react";
+import { Header, Card, Grid,Container, Image, Icon, Button } from "semantic-ui-react";
 
 const Tutors = (props) => {
-  const [search, setSearch] = useState("");
-  const [value, setValue] = useState("");
 
   return (
     <div>
@@ -16,7 +14,8 @@ const Tutors = (props) => {
         </Header>
       </div>
       <hr />
-      <Grid divided="vertically">
+      <Container>
+        <Grid divided="vertically">
         <Grid.Row columns={3}>
           {props.data.map((tutor, index) => {
             return (
@@ -54,6 +53,8 @@ const Tutors = (props) => {
           })}
         </Grid.Row>
       </Grid>
+      </Container>
+      
     </div>
   );
 };

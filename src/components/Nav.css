@@ -6,7 +6,7 @@
 }
 
 .navbar{
-  background: rgb(255, 207, 207);
+  /* background: rgb(255, 207, 207); */
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -27,7 +27,7 @@
 }
 
 .btnHome{
-  color: rgb(45, 104, 172);
+  color:rgb(45, 104, 172);
     display: flex;
     align-items: center;
     text-decoration: none;
