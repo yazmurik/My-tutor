@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import './App.css';
 import axios from 'axios';
-import { baseURL, config} from "./components/services";
+import { useHistory } from "react-router-dom";
+import { baseURL, config } from "./components/services";
 import Nav from './components/Nav';
-import AddTutor from './components/pages/AddTutor';
-import EditTutor from './components/pages/EditTutor';
+import AddTutor from './components/pages/tutors/AddTutor';
+import EditTutor from './components/pages/tutors/EditTutor';
 import Home from './components/pages/Home/Home';
 import Payment from './components/Payment';
-import TutorInfo from './components/pages/TutorInfo';
-import Tutors from './components/pages/Tutors';
+import TutorInfo from './components/pages/tutors/TutorInfo';
+import Tutors from './components/pages/tutors/Tutors';
 import Trivia from './components/pages/Trivia'
 import { Route} from "react-router-dom";
 import Footer from "./components/Footer"
@@ -27,21 +28,33 @@ const useStyles = makeStyles((theme) => ({
 
 
 function App() {
-const classes= useStyles();
+  const classes= useStyles();
+  const history = useHistory();
+  const [tutors, setTutors] = useState([]);
+  const [tutorInfo, setTutorInfo] = useState();
 
-  const [data, setData] = useState([]);
-  const [tutorInfo, setTutorInfo] =useState("");
-  const[total,setTotal] = useState(null);
+  const getTutor = async (id) => {
+    let resp = await axios.get(`${baseURL}/${id}`, config)
+    setTutorInfo(resp.data)
+  };
 
+  const getTutors = async () => {
+    let resp = await axios.get(baseURL, config);
+    console.log("getTutors: ", resp)
+    setTutors(resp.data.records);
+  };
 
-  useEffect(() => {
-    const getData = async () => {
-      let resp = await axios.get(baseURL,config);
-      setData(resp.data.records);
-    }
-    getData();
-  }, []);
-  console.log('main data is',data)
+  const addTutor = async (data)=>{
+    let resp = await axios.post(baseURL, { fields: data }, config);
+    setTutors(tutors => [...tutors,  resp.data])
+    history.push("/tutors");
+  }
+  
+  const deleteTutor = async (id) => {
+    let tutorUrl = `${baseURL}/${id}`;
+    await axios.delete(tutorUrl, config);
+    history.push("/tutors");
+  }
 
   return (
     <div className={classes.root}>
@@ -49,19 +62,31 @@ const classes= useStyles();
       <div className="content-wrap">
           <Nav/>
         <Route path='/edit/:id'>
-          <EditTutor data={data}/>
+          <EditTutor 
+          tutorInfo={tutorInfo}
+          setTutorInfo={setTutorInfo}
+          getTutor={getTutor}
+          />
           </Route>
         <Route path="/tutors">
-          <Tutors data={data} setTutorInfo={setTutorInfo}/>
+          <Tutors 
+            tutors={tutors}
+            getTutors={getTutors}
+            setTutorInfo={setTutorInfo}
+          />
         </Route>
         <Route path="/trivia">
           <Trivia/>
         </Route>
         <Route path="/AddTutor" >
-          <AddTutor />
+          <AddTutor addTutor={addTutor}/>
         </Route>
-        <Route path="/TutorInfo" >
-          <TutorInfo tutorInfo={tutorInfo} data={data}  total={total}/>
+        <Route path="/TutorInfo/:id" >
+          <TutorInfo 
+            tutorInfo={tutorInfo}
+            getTutor={getTutor}
+            deleteTutor={deleteTutor}
+          />
         </Route>
         <Route path="/Payment"  >
           <Payment />
