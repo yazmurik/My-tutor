@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import axios from 'axios';
+import {baseURL, config} from "../../services"
 import { Button, Checkbox, Form, TextArea } from "semantic-ui-react";
-import { Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react';
+import { useHistory} from "react-router-dom";
 
 import "../../AddTutor.css";
 
@@ -11,6 +14,8 @@ function AddTutor(props) {
   const [about, setAbout] = useState("");
   const [img, setImg] = useState("");
 
+  const history = useHistory();
+
   async function handleSubmit(e) {
     e.preventDefault();
     let data = {
@@ -20,11 +25,11 @@ function AddTutor(props) {
       about,
       img,
     };
-    props.addTutor(data)
-  }
+    await axios.post(baseURL, { fields: data }, config);
+      history.push("/tutors");
+    }
 
   return (
-
     <Grid centered columns={2}>
     <Grid.Column>
       <Form>

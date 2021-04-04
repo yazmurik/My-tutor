@@ -30,31 +30,20 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes= useStyles();
   const history = useHistory();
-  const [tutors, setTutors] = useState([]);
-  const [tutorInfo, setTutorInfo] = useState();
 
-  const getTutor = async (id) => {
-    let resp = await axios.get(`${baseURL}/${id}`, config)
-    setTutorInfo(resp.data)
-  };
+  const [data, setData] = useState([]);
 
-  const getTutors = async () => {
-    let resp = await axios.get(baseURL, config);
-    console.log("getTutors: ", resp)
-    setTutors(resp.data.records);
-  };
+  const [total, setTotal] = useState(null);
 
-  const addTutor = async (data)=>{
-    let resp = await axios.post(baseURL, { fields: data }, config);
-    setTutors(tutors => [...tutors,  resp.data])
-    history.push("/tutors");
-  }
-  
-  const deleteTutor = async (id) => {
-    let tutorUrl = `${baseURL}/${id}`;
-    await axios.delete(tutorUrl, config);
-    history.push("/tutors");
-  }
+  useEffect(() => {
+    const getData = async () => {
+      let resp = await axios.get(baseURL, config);
+      setData(resp.data.records);
+    };
+    getData();
+  }, []);
+
+  console.log("main data is", data);
 
   return (
     <div className={classes.root}>
@@ -62,31 +51,19 @@ function App() {
       <div className="content-wrap">
           <Nav/>
         <Route path='/edit/:id'>
-          <EditTutor 
-          tutorInfo={tutorInfo}
-          setTutorInfo={setTutorInfo}
-          getTutor={getTutor}
-          />
+          <EditTutor data={data} />
           </Route>
         <Route path="/tutors">
-          <Tutors 
-            tutors={tutors}
-            getTutors={getTutors}
-            setTutorInfo={setTutorInfo}
-          />
+          <Tutors />
         </Route>
         <Route path="/trivia">
           <Trivia/>
         </Route>
         <Route path="/AddTutor" >
-          <AddTutor addTutor={addTutor}/>
+          <AddTutor/>
         </Route>
         <Route path="/TutorInfo/:id" >
-          <TutorInfo 
-            tutorInfo={tutorInfo}
-            getTutor={getTutor}
-            deleteTutor={deleteTutor}
-          />
+          <TutorInfo/>
         </Route>
         <Route path="/Payment"  >
           <Payment />

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import { baseURL, config } from "../../services";
+
 import "../../Tutors.css";
 import {
   Header,
@@ -11,12 +14,22 @@ import {
   Button,
 } from "semantic-ui-react";
 
-const Tutors = (props) => {
-  const[loading, setLoading]= useState(true)
+const Tutors = () => {
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    props.getTutors();
-  }, [props.tutors.length]);
+    let mounted = true;
+    const getData = async () => {
+      let resp = await axios.get(baseURL, config);
+      if (mounted) {
+        setData(resp.data.records);
+      }
+    };
+    getData();
+    return () => {
+      mounted = false;
+    };
+  }, [data])
 
   return (
     <div>
@@ -30,7 +43,7 @@ const Tutors = (props) => {
       <Container>
         <Grid divided="vertically">
           <Grid.Row columns={3}>
-            {props.tutors && props.tutors.map((tutor, index) => {
+            {data ? data.map((tutor, index) => {
               return (
                 <Grid.Column key={index}>
                   <Card>
@@ -48,13 +61,7 @@ const Tutors = (props) => {
                       <Link to={`/TutorInfo/${tutor.id}`}>
                         <Button
                           icon
-                          labelPosition="right"
-                          onClick={(e) => {
-                            if (e.target.textContent === "More Info...") {
-                              props.setTutorInfo(tutor);
-                            }
-                          }}
-                        >
+                          labelPosition="right">
                           More Info...
                           <Icon name="right arrow" />
                         </Button>
@@ -63,7 +70,8 @@ const Tutors = (props) => {
                   </Card>
                 </Grid.Column>
               );
-            })}
+            })
+          : null}
           </Grid.Row>
         </Grid>
       </Container>

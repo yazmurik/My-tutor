@@ -1,17 +1,38 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useHistory, useParams } from "react-router-dom";
 import { Table, Grid, Button } from "semantic-ui-react";
+import { baseURL, config } from "../../services";
 
 function TutorInfo(props) {
   let params = useParams();
+  let history= useHistory();
+
+  const [loading, setLoading]= useState(true);
+  const [data, setData]= useState([]);
 
   useEffect(() => {
-    props.getTutor(params.id);
-  }, [props.tutorInfo && props.tutorInfo.id]);
+    (async()=>{
+      const resp = await axios.get(baseURL, config);
+      setData(resp.data.records);
+      setLoading(false);
+    })();
+  }, [])
+
+  if(loading){
+    return <h1>Loading</h1>;
+  }
+
+  const tutorInfo= data ? data.find((tutor) => tutor.id === params.id) : null;
+
+  const removeLesson = async (id) =>{
+    let tutorUrl = `${baseURL}/${id}`;
+    await axios.delete(tutorUrl, config);
+    history.push("/tutors");
+  }
 
   return (
-    (!props.tutorInfo) ? null :
     <Grid centered columns={2}>
       <Grid.Column>
         <Table fixed>
@@ -26,17 +47,17 @@ function TutorInfo(props) {
 
           <Table.Body>
             <Table.Row>
-              <Table.Cell>{props.tutorInfo.fields.name}</Table.Cell>
-              <Table.Cell>{props.tutorInfo.fields.lessons}</Table.Cell>
-              <Table.Cell>{props.tutorInfo.fields.price}</Table.Cell>
-              <Table.Cell>{props.tutorInfo.fields.about}</Table.Cell>
+              <Table.Cell>{tutorInfo.fields.name}</Table.Cell>
+              <Table.Cell>{tutorInfo.fields.lessons}</Table.Cell>
+              <Table.Cell>{tutorInfo.fields.price}</Table.Cell>
+              <Table.Cell>{tutorInfo.fields.about}</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>
         <Button.Group centered>
-          <Button onClick={() => props.deleteTutor(props.tutorInfo.id)}>Remove</Button>
+          <Button onClick={() => removeLesson(params.id)}>Remove</Button>
           <Button.Or />
-          <Link to={`/edit/${props.tutorInfo.id}`}>
+          <Link to={`/edit/${tutorInfo.id}`}>
             <Button positive>Edit</Button>
           </Link>
         </Button.Group>

@@ -13,23 +13,27 @@ function EditTutor(props) {
   const [price, setPrice] = useState("");
   const [about, setAbout] = useState("");
   const [img, setImg] = useState("");
+
   const params = useParams();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const history = useHistory();
 
-  useEffect(() => {
-    (async ()=>{
-      let resp = await axios.get(`${baseURL}/${id}`, config)
-    })
-
-  }, [params.id])
-
-  console.log()
+useEffect(() => {
+    if (params.id && props.data.length > 0) {
+      const tutor = props.data.find((tutor) => tutor.id === params.id);
+      setName(tutor.fields.name);
+      setLessons(tutor.fields.lessons);
+      setPrice(tutor.fields.price);
+      setAbout(tutor.fields.about);
+      setImg(tutor.fields.img);
+    }
+  }, [props.data, params.id]);
+                           
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // create a fields object, to send to airtable 😀
+    // create a fields object, to send to airtable 😀+
     const fields = {
       name,
       lessons,
@@ -49,7 +53,6 @@ function EditTutor(props) {
   };
 
   return (
-    (!props.tutorInfo) ? null :
     <Grid centered columns={2}>
     <Grid.Column>
       <Form>
