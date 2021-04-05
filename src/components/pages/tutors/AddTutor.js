@@ -68,6 +68,17 @@ function AddTutor(props) {
             />
           </Form.Field>
           <Form.Field>
+            <label>Img Url</label>
+            <input
+              placeholder="Image adress"
+              name="image"
+              value={img}
+              onChange={(e) => {
+                setImg(e.target.value);
+              }}
+            />
+          </Form.Field>
+          <Form.Field>
             <label>About</label>
             <TextArea
               placeholder="Tell us more"

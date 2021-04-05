@@ -48,7 +48,7 @@ const Tutors = () => {
                 <Grid.Column key={index}>
                   <Card>
                     <Image
-                      src="/images/avatar/large/daniel.jpg"
+                      src={tutor.fields.img}
                       wrapped
                       ui={false}
                     />

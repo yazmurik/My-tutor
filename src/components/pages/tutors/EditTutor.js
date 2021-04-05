@@ -3,7 +3,6 @@ import { useHistory, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL, config } from "../../services";
-import {Link } from "react-router-dom";
 import { Button, Checkbox, Grid, Form, TextArea } from 'semantic-ui-react'
 
 
@@ -15,8 +14,6 @@ function EditTutor(props) {
   const [img, setImg] = useState("");
 
   const params = useParams();
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
   const history = useHistory();
 
 useEffect(() => {
