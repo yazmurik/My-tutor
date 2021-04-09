@@ -42,7 +42,7 @@ function Nav() {
             </ul>
           </div>
           <div>
-            <Link to="/signup">
+            <Link to="/register">
               <button className="signBtn">
                 <h5> Sign Up</h5>
               </button>
