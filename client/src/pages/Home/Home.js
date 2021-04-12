@@ -1,23 +1,21 @@
-import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import './Home.css';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import "./Home.css";
+import CarouselImg from "../../components/Carousel/CarouselImg";
 
-const useStyles= makeStyles((theme) =>({
-
-}))
+const useStyles = makeStyles((theme) => ({}));
 
 function Home() {
   return (
-    <div>
-      <br/>
-      <div className="ui icon input">
-      <input type="text" placeholder="Search..."/>
-      <i aria-hidden="true" className="search icon"></i>
-      </div>
+    <>
+      <br />
       <div>
-        <h1>Welcome to <br/> My <span></span>Tutor.</h1>
+        <h1 className="display-4 my-3">
+          Welcome to My<span>Tutor.</span>
+        </h1>
       </div>
-    </div>
+      <CarouselImg />
+    </>
   );
 }
 

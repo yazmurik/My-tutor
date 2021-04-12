@@ -3,29 +3,31 @@ import { useHistory, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL, config } from "../../../services";
+import {Link } from "react-router-dom";
 import { Button, Checkbox, Grid, Form, TextArea } from 'semantic-ui-react'
 
 
-function EditTutor(props) {
+function EditTutor({data}) {
   const [name, setName] = useState("");
   const [lessons, setLessons] = useState("");
   const [price, setPrice] = useState("");
   const [about, setAbout] = useState("");
   const [img, setImg] = useState("");
-
   const params = useParams();
+  const [loading, setLoading] = useState(true);
   const history = useHistory();
 
+
 useEffect(() => {
-    if (params.id && props.data.length > 0) {
-      const tutor = props.data.find((tutor) => tutor.id === params.id);
+    if (params.id && data.length > 0) {
+      const tutor = data.find((tutor) => tutor.id === params.id);
       setName(tutor.fields.name);
       setLessons(tutor.fields.lessons);
       setPrice(tutor.fields.price);
       setAbout(tutor.fields.about);
       setImg(tutor.fields.img);
     }
-  }, [props.data, params.id]);
+  }, [data, params.id]);
                            
 
   const handleSubmit = async (e) => {
