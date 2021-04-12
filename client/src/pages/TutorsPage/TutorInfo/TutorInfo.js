@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useHistory, useParams } from "react-router-dom";
 import { Table, Grid, Button } from "semantic-ui-react";
-import { baseURL, config } from "../../services";
+import { baseURL, config } from "../../../services";
 
 function TutorInfo(props) {
   let params = useParams();

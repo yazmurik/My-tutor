@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import {baseURL, config} from "../../services"
+import {baseURL, config} from "../../../services"
 import { Button, Checkbox, Form, TextArea } from "semantic-ui-react";
 import { Grid } from 'semantic-ui-react';
 import { useHistory} from "react-router-dom";
 
-import "../../AddTutor.css";
+import "./AddTutor.css";
 
 function AddTutor(props) {
   const [name, setName] = useState("");
@@ -34,9 +34,9 @@ function AddTutor(props) {
     <Grid.Column>
       <Form>
           <Form.Field>
-            <label>First Name</label>
+            <label>First and Last name</label>
             <input
-              placeholder="First Name"
+              placeholder="First and Last name"
               type="text"
               name="name"
               value={name}

@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { baseURL, config } from "../../services";
+import { baseURL, config } from "../../../services";
 import { Button, Checkbox, Grid, Form, TextArea } from 'semantic-ui-react'
 
 
