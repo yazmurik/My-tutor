@@ -1,11 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const dotenv =require('dotenv')
+
 
 const app = express();
 
-dotenv.config()
-mongoose.connect(process.env.DB_ACCESS, () => console.log("DB Connected"))
+//Connnect to db
+const db = require('./config/keys').MongoURI;
+
+//connect to mongo
+mongoose.connect(db, {useNewUrlParser: true,  useUnifiedTopology: true  })
+.then(() => console.log("mongo db connected"))
+.catch(err => console.log(err));
+
+//Bodyparser
+app.use(express.urlencoded({}))
 
 //Routes
 app.use('/', require('./routes/index'));
