@@ -51,7 +51,7 @@ function App() {
         <Route path="/AddTutor" component={AddTutor} />
         <Route path="/TutorInfo/:id" component={TutorInfo} />
         <Route path="/Payment" component={Payment} />
-        <Route path="/SignUp" component={SignUp} />
+        <Route path="/register" component={SignUp} />
       </div>
       <Footer/>
     </div>
