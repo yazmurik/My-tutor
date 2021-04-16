@@ -17,25 +17,4 @@ router.get('/tutorinfo/:tutorId', (req, res)=> {
                     .catch((errMsg)=>{res.json(errMsg)})
 })
 
-router.post("/",(req,res,next)=>{
-    const newTutor = new TutorModel(req.body)
-    newTutor.save()
-                .then((tutor)=>{res.json(tutor)})
-                .catch((err)=>{res.json(err)})
-})
-
-//Update a tutor with new infos /tutors/:tutorId
-router.put('/:tutorId', (req, res,next)=> {
-    TutorModel.findByIdAndUpdate(req.params.tutorId,req.body,{new:true})
-                    .then((tutor)=>{res.json(tutor)})
-                    .catch((err)=>{res.json(err)})
-})
-
-//Delete a tutor
-router.delete('/:tutorId', (req, res,next)=> {
-    TutorModel.findByIdAndRemove(req.params.tutorId)
-                    .then((tutor)=>{res.json(tutor)})
-                    .catch((err)=>{res.json(err)})
-})
-
 module.exports = router;
